@@ -38,4 +38,6 @@ Test the app by opening your browser and access http://nodejs.test/
 
 * To shut down the virtual machine, enter `vagrant halt` in the Terminal in the same folder that has the `Vagrantfile`. To destroy it completely (if you want to save a little disk space, or want to rebuild it from scratch with `vagrant up` again), type in `vagrant destroy`.
 
-> Reference: https://github.com/geerlingguy/ansible-for-devops/tree/master/nodejs
+#### References:
+- https://github.com/geerlingguy/ansible-for-devops/tree/master/nodejs
+- https://github.com/nickovivar/DevOps-Minichat
