@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # App server
   config.vm.define "webserver" do |app|
     app.vm.hostname = "nodejs.test"
-    app.vm.network :forwarded_port, guest: 80, host: 3000
+    app.vm.network :forwarded_port, guest: 3000, host: 8080
     app.vm.network "public_network"
   end
 end

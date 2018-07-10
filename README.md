@@ -32,7 +32,7 @@ ansible webservers -a "date" -i ansible/hosts
 ansible-playbook ansible/playbooks/webserver_playbook.yml -i ansible/hosts
 ```
 
-Test the app by opening your browser and access http://nodejs.test/
+Test the app by opening your browser and access http://nodejs.test:8080/
 
 ## Notes
 
