@@ -2,3 +2,4 @@ node_modules
 *.retry
 .vagrant
 .DS_Store
+external-roles/

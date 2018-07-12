@@ -5,8 +5,9 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "geerlingguy/centos7"
-  # config.vm.network :private_network, ip: "192.168.55.55"
   config.ssh.insert_key = false
+  config.ssh.private_key_path = ["~/.ssh/id_rsa", "~/.vagrant.d/insecure_private_key"]
+  config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/authorized_keys"
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
   config.vm.provider :virtualbox do |v|
@@ -16,8 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # App server
   config.vm.define "webserver" do |app|
-    app.vm.hostname = "nodejs.test"
     app.vm.network :forwarded_port, guest: 3000, host: 8080
-    app.vm.network "public_network"
+    app.vm.network :private_network, ip: "192.168.1.10"
   end
 end

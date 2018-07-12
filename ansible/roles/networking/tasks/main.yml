@@ -1,0 +1,9 @@
+---
+- firewalld:
+    service: '{{item}}'
+    permanent: true
+    state: enabled
+  with_items:
+    - http
+    - https
+    - ssh

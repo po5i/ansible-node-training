@@ -10,34 +10,37 @@ Open Terminal, cd to this directory (containing the `Vagrantfile` and this READM
 
 Type in `vagrant up`, and let Vagrant do its magic. (To connect to the VM use `vagrant ssh` just for fun)
 
-Edit your hosts file, adding the line:
+Edit your hosts file, adding the line (optional):
 
 ```
-127.0.0.1 nodejs.test
+192.168.1.10 nodejs.test
 ```
 
 ## Some commands
 
 ```bash
-ansible multi -a "hostname" -i ansible/hosts
-ansible multi -a "df -h" -i ansible/hosts
-ansible --help
-ansible multi -a "free -m" -i ansible/hosts
-ansible webservers -a "date" -i ansible/hosts
+cd ansible
+ansible multi -a "hostname"
+ansible multi -a "df -h"
+ansible multi -a "free -m"
+ansible webservers -a "date"
 ```
 
 ## Provisioning
 
 ```bash
-ansible-playbook ansible/playbooks/webserver_playbook.yml -i ansible/hosts
+cd anisible
+ansible-galaxy install -r requirements.yml
+ansible-playbook ansible/playbooks/webserver_playbook.yml
 ```
 
-Test the app by opening your browser and access http://nodejs.test:8080/
+Test the app by opening your browser and access http://nodejs.test (if you added the host, otherwise the IP address).
 
 ## Notes
 
 * To shut down the virtual machine, enter `vagrant halt` in the Terminal in the same folder that has the `Vagrantfile`. To destroy it completely (if you want to save a little disk space, or want to rebuild it from scratch with `vagrant up` again), type in `vagrant destroy`.
 
-#### References:
-- https://github.com/geerlingguy/ansible-for-devops/tree/master/nodejs
-- https://github.com/nickovivar/DevOps-Minichat
+### References
+
+* https://github.com/geerlingguy/ansible-for-devops/tree/master/nodejs
+* https://github.com/nickovivar/DevOps-Minichat
